@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Kaleidoscope Lighting",
+        "description": "Enter the base URL of your Kaleidoscope controller (e.g. http://192.168.1.50/) and the polling interval in seconds.",
+        "data": {
+          "base_url": "Base URL",
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Kaleidoscope API"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kaleidoscope Options",
+        "description": "Adjust how often the integration polls the controller.",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  }
+}

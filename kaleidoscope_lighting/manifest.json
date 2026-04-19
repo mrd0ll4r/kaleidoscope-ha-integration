@@ -1,0 +1,10 @@
+{
+  "domain": "kaleidoscope_lighting",
+  "name": "Kaleidoscope Lighting",
+  "version": "0.1.0",
+  "documentation": "https://github.com/mrd0ll4r/kaleidoscope/",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": [],
+  "config_flow": true
+}
