@@ -24,17 +24,26 @@ to allow setting them programmatically before switching to a new program.
 
 ### Kaleidoscope Integration
 
+#### Via HACS
+
+1. Install HACS
+2. Add this repository as a custom repository in HACS. Set the type to `Integration`.
+3. Search for `Kaleidoscope Lighting` via HACS and install
+4. Restart Home Assistant
+5. Connect to Kaleidoscope via Settings -> Devices -> Add Integration -> Kaleidoscope
+6. The integration discovers fixtures, programs, and parameters.
+7. Assign locations and other metadata to newly-discovered devices as usual.
+
+#### Manually
+
 1. Create `<HA config dir>/custom_components/kaleidoscope_lighting`
-2. Copy `kaleidoscope_lighting/*` to `<HA config dir>/custom_components/kaleidoscope_lighting`
-3. Restart Home Assistant
-4. Connect to Kaleidoscope via Settings -> Devices -> Add Integration -> Kaleidoscope
-5. The integration discovers fixtures, programs, and parameters.
-6. Assign locations and other metadata to newly-discovered devices as usual.
+2. Copy `custom_components/kaleidoscope_lighting/*` to `<HA config dir>/custom_components/kaleidoscope_lighting`
+3. Restart Home Assistant.
+4. Proceed as above.
 
 ### Dashboard
 
-1. Install HACS
-2. Install `auto-entities` via HACS, see [here](https://github.com/thomasloven/lovelace-auto-entities)
-3. Add a new dashboard: Settings -> Dashboards -> Add Dashboard -> From Scratch
-4. In the dashboard, add device cards as needed: Edit (top right) -> Add Card -> Manual (all the way at the bottom)
-5. Edit/Paste appropriate YAML from `cards/`
+1. Install HACS.
+2. Install `auto-entities` via HACS, see [here](https://github.com/thomasloven/lovelace-auto-entities).
+3. Add a new dashboard: Settings -> Dashboards -> Add Dashboard -> From Scratch.
+4. In the dashboard, paste the appropriate YAML from `dashboards/`.
