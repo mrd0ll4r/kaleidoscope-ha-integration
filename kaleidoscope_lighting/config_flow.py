@@ -54,7 +54,7 @@ class KaleidoscopeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=vol.Schema({
                 vol.Required("base_url"): str,
-                vol.Required("scan_interval", default=5): vol.All(int, vol.Range(min=1, max=60)),
+                vol.Required("polling_interval", default=3): vol.All(int, vol.Range(min=1, max=10)),
             }),
             errors=errors,
         )
@@ -66,13 +66,13 @@ class KaleidoscopeOptionsFlow(config_entries.OptionsFlow):
             return self.async_create_entry(title="", data=user_input)
 
         current = self.config_entry.options.get(
-            "scan_interval",
-            self.config_entry.data.get("scan_interval", 5),
+            "polling_interval",
+            self.config_entry.data.get("polling_interval", 3),
         )
 
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema({
-                vol.Required("scan_interval", default=current): vol.All(int, vol.Range(min=1, max=60)),
+                vol.Required("polling_interval", default=current): vol.All(int, vol.Range(min=1, max=10)),
             }),
         )
