@@ -25,11 +25,11 @@ class KaleidoscopeCycleButton(BaseEntity, ButtonEntity):
 
     @property
     def name(self):
-        return f"{self.fixture_id} cycle program"
+        return "Cycle Program"
 
     @property
     def unique_id(self):
-        return f"{self.fixture_id}__cycle_program_button"
+        return f"kaleidoscope_{self.fixture_id}__cycle_program_button"
 
     async def async_press(self):
         try:

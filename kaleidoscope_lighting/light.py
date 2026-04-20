@@ -35,11 +35,11 @@ class KaleidoscopeLight(BaseEntity, LightEntity):
 
     @property
     def name(self):
-        return self.fixture_id
+        return ""
 
     @property
     def unique_id(self):
-        return f"{self.fixture_id}__light"
+        return f"kaleidoscope_{self.fixture_id}__light"
 
     @property
     def available(self):

@@ -35,11 +35,18 @@ async def async_setup_entry(hass, entry, async_add_entities):
 class KaleidoscopeProgramSelect(BaseEntity, SelectEntity):
     @property
     def name(self):
-        return f"{self.fixture_id}.program"
+        return "Program"
 
     @property
     def unique_id(self):
-        return f"{self.fixture_id}__program_selector"
+        return f"kaleidoscope_{self.fixture_id}__program_selector"
+
+    @property
+    def extra_state_attributes(self):
+        return {
+            "fixture_id": self.fixture_id,
+            "kind": "program",
+        }
 
     @property
     def options(self):
@@ -81,14 +88,14 @@ class KaleidoscopeDiscreteParam(BaseEntity, SelectEntity):
 
     @property
     def name(self):
-        return f"{self.fixture_id}.{self.program}.{self.param}"
+        return f"{self.program} {self.param}"
 
     def _param(self):
         return self._fixture()["programs"][self.program]["parameters"][self.param]
 
     @property
     def unique_id(self):
-        return f"{self.fixture_id}_{self.program}_{self.param}"
+        return f"kaleidoscope_{self.fixture_id}_{self.program}_{self.param}"
 
     @property
     def options(self):
@@ -101,7 +108,11 @@ class KaleidoscopeDiscreteParam(BaseEntity, SelectEntity):
     @property
     def extra_state_attributes(self):
         return {
-            "options_with_description": self._param()["levels"]
+            "options_with_description": self._param()["levels"],
+            "fixture_id": self.fixture_id,
+            "kind": "parameter",
+            "program": self.program,
+            "parameter": self.param,
         }
 
     async def async_select_option(self, option):

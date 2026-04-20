@@ -5,6 +5,7 @@ from homeassistant.helpers.update_coordinator import UpdateFailed
 from . import DOMAIN
 from .entity import BaseEntity
 
+
 async def async_setup_entry(hass, entry, async_add_entities):
     coordinator = hass.data[DOMAIN][entry.entry_id]
     entities = []
@@ -39,11 +40,20 @@ class KaleidoscopeNumber(BaseEntity, NumberEntity):
 
     @property
     def name(self):
-        return f"{self.fixture_id}.{self.program}.{self.param}"
+        return f"{self.program} {self.param}"
 
     @property
     def unique_id(self):
-        return f"{self.fixture_id}_{self.program}_{self.param}"
+        return f"kaleidoscope_{self.fixture_id}_{self.program}_{self.param}"
+
+    @property
+    def extra_state_attributes(self):
+        return {
+            "fixture_id": self.fixture_id,
+            "kind": "parameter",
+            "program": self.program,
+            "parameter": self.param,
+        }
 
     @property
     def native_min_value(self):
